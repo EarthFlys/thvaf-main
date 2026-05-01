@@ -51,6 +51,16 @@
       "rank": "Airman First Class",
       "role": "Pilot",
       "ivaoId": "518533"
+    },
+    {
+      "callsign": "VIPER1",
+      "name": "Hello World",
+      "vid": "123456",
+      "rank": "Flight Cadet",
+      "aircraft": "F16",
+      "status": "active",
+      "joinDate": "2026-05-02",
+      "role": "member"
     }
   ],
   "community": [
