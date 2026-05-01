@@ -51,6 +51,16 @@
       "rank": "Airman First Class",
       "role": "Pilot",
       "ivaoId": "518533"
+    },
+    {
+      "callsign": "VIPER",
+      "name": "Narongrit TEST",
+      "vid": "123456",
+      "rank": "Group Captain",
+      "aircraft": "F-16",
+      "status": "reserve",
+      "joinDate": "2026-05-01",
+      "role": "instructor"
     }
   ],
   "community": [
