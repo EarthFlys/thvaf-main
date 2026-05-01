@@ -1,0 +1,20 @@
+{
+  "navlog": [
+    { "id": "MY WINGMAN OVER THAILAND 2026", "dep": "VTSB", "arr": "VTUD", "aircraft": "Any Fighter Jet", "status": "pending" },
+    { "id": "THAILAND CROSS COUNTRY VFR พาทัวร์ / SUNNY", "dep": "VTSY", "arr": "VTCT", "aircraft": "DA40", "status": "pending" },
+    { "id": "OP-2605 / ANGLE RED", "dep": "HTMS Chakri Naruebet", "arr": "VTBU", "aircraft": "AV-8B", "status": "completed" },
+    { "id": "OP-2604 / SUNNY BLACK", "dep": "VTBK", "arr": "VTBD", "aircraft": "DA42", "status": "completed" },
+    { "id": "OP-2603 / LIGHTNING YELLOW", "dep": "VTBD", "arr": "VTUQ", "aircraft": "F-16", "status": "completed" },
+    { "id": "OP-2602 / SUNNY BLUE", "dep": "VTBK", "arr": "VTBD", "aircraft": "DA40", "status": "completed" },
+    { "id": "OP-2601 / SUNNY BLUE", "dep": "VTUD", "arr": "VTBD", "aircraft": "Any Propeller Aircraft", "status": "completed" }
+  ],
+  "missions": [
+    { "date": "To Be Announce", "title": "My Wingman Over Thailand 2026", "description": "ขอเชิญชวนเหล่าเสืออากาศทั่วสารทิศ มาร่วมสร้างประวัติศาสตร์ออนไลน์บนน่านฟ้าไทย! เตรียมเครื่องยนต์ให้พร้อม เติมน้ำมันให้เต็มถัง เพราะครั้งนี้เราจะบินเกาะหมู่ครั้งยิ่งใหญ่ที่สุดเท่าที่เคยมีมา ด้วยเครื่องบินรบไอพ่นทุกตระกูล เส้นทางยุทธการจากสุราษฎร์ธานี - ถิ่นฉลาม ไปยัง อุดรธานี - บ้าน HUNTER", "status": "planned" },
+    { "date": "28 APR 2026 - Present", "title": "Thailand Cross Country VFR พาทัวร์", "description": "Tour การบินเดินทางไปทั้ง 77 จังหวัดในไทย", "status": "pending" },
+    { "date": "27 APR 2026", "title": "Harrier Formation Flight", "description": "การฝึกบินรูปหมู่", "status": "completed" },
+    { "date": "22 APR 2026", "title": "Sunny Black Formation", "description": "การฝึกบินรูปหมู่", "status": "completed" },
+    { "date": "20 APR 2026", "title": "Lighting Yellow Formation", "description": "การฝึกซ้อมการบินแสดงความสามารถ", "status": "completed" },
+    { "date": "19 APR 2026", "title": "Sunny Blue Formation", "description": "การฝึกบินรูปหมู่", "status": "completed" },
+    { "date": "30 MAR 2026", "title": "Eyes out, Hands on! #มิตรภาพลาบก้อย", "description": "การบินเดินทาง", "status": "completed" }
+  ]
+}

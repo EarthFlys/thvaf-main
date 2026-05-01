@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TVAF Ops — Admin Panel</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"/>
+    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="Css/admin.css" />
+  </head>
+  <body>
+    <!-- PASSWORD GATE -->
+    <div id="passwordGate">
+      <div class="pw-box">
+        <div class="pw-logo">
+          <img src="image/thvaf.png" alt="TVAF Logo" />
+        </div>
+        <div class="pw-title">TVAF OPS</div>
+        <div class="pw-sub">Admin Control Panel</div>
+        <input
+          class="pw-input"
+          type="password"
+          id="pwInput"  
+          placeholder="Enter password"
+          autocomplete="current-password"
+          onkeydown="if (event.key === 'Enter') checkPassword();"
+        />
+        <button class="pw-btn" onclick="checkPassword()">
+          <i class="fas fa-shield-alt"></i> &nbsp;AUTHENTICATE
+        </button>
+        <div class="pw-error" id="pwError"></div>
+        <div class="pw-hint">
+          <i class="fas fa-lock"></i> &nbsp;Authorized personnel only
+        </div>
+      </div>
+    </div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-logo">
+        <img src="image/thvaf.png" alt="TVAF Logo" class="logo-icon">
+        <div class="logo-text-wrap">
+          <div class="logo-main">TVAF OPS</div>
+          <div class="logo-sub">Admin Control</div>
+        </div>
+      </div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">Overview</div>
+        <a
+          class="nav-item active"
+          data-section="dashboard"
+          onclick="navigate('dashboard')"
+        >
+          <i class="fas fa-tachometer-alt"></i> Dashboard
+        </a>
+        <div class="nav-section-label">Content</div>
+        <a class="nav-item" data-section="roster" onclick="navigate('roster')">
+          <i class="fas fa-users"></i> Roster
+        </a>
+        <a
+          class="nav-item"
+          data-section="missions"
+          onclick="navigate('missions')"
+        >
+          <i class="fas fa-crosshairs"></i> Missions
+        </a>
+        <a class="nav-item" data-section="fleet" onclick="navigate('fleet')">
+          <i class="fas fa-fighter-jet"></i> Fleet
+        </a>
+        <a
+          class="nav-item"
+          data-section="gallery"
+          onclick="navigate('gallery')"
+        >
+          <i class="fas fa-images"></i> Gallery
+        </a>
+        <div class="nav-section-label">GitHub</div>
+        <a class="nav-item" data-section="files" onclick="navigate('files')">
+          <i class="fab fa-github"></i> File Manager
+        </a>
+        <a
+          class="nav-item"
+          data-section="commits"
+          onclick="navigate('commits')"
+        >
+          <i class="fas fa-code-branch"></i> Commits
+        </a>
+        <div class="nav-section-label">System</div>
+        <a
+          class="nav-item"
+          data-section="settings"
+          onclick="navigate('settings')"
+        >
+          <i class="fas fa-cog"></i> Settings
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="user-pill">
+          <div class="user-avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Admin</div>
+            <div class="user-role">TVAF Command</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button
+            class="hamburger"
+            onclick="
+              document.getElementById('sidebar').classList.toggle('open')
+            "
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="page-title" id="pageTitle">Dashboard</div>
+        </div>
+        <div class="topbar-right">
+          <div style="display: flex; align-items: center; gap: 8px">
+            <div class="status-dot" id="ghStatusDot"></div>
+            <span class="status-text" id="ghStatusText">Connecting...</span>
+          </div>
+          <button class="topbar-btn" onclick="syncAll()">
+            <i class="fas fa-sync-alt"></i> Sync
+          </button>
+          <button class="topbar-btn danger" onclick="clearCache()">
+            <i class="fas fa-trash"></i> Clear Cache
+          </button>
+        </div>
+      </header>
+
+      <div class="content">
+        <!-- DASHBOARD -->
+        <div id="dashboard" class="section active">
+          <div class="stat-row" id="dashStats">
+            <div class="stat-card">
+              <i class="fas fa-users stat-icon"></i>
+              <div class="stat-label">Active Pilots</div>
+              <div class="stat-value" id="statPilots">—</div>
+            </div>
+            <div class="stat-card gold">
+              <i class="fas fa-fighter-jet stat-icon"></i>
+              <div class="stat-label">Aircraft</div>
+              <div class="stat-value" id="statAircraft">—</div>
+            </div>
+            <div class="stat-card green">
+              <i class="fas fa-check-circle stat-icon"></i>
+              <div class="stat-label">Missions</div>
+              <div class="stat-value" id="statMissions">—</div>
+            </div>
+            <div class="stat-card red">
+              <i class="fab fa-github stat-icon"></i>
+              <div class="stat-label">Commits</div>
+              <div class="stat-value" id="statCommits">—</div>
+            </div>
+          </div>
+
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px">
+            <div class="panel">
+              <div class="panel-header">
+                <div class="panel-title">
+                  <i class="fas fa-code-branch"></i> Recent Commits
+                </div>
+              </div>
+              <div class="panel-body" id="recentCommits">
+                <div class="loading-spin"></div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-header">
+                <div class="panel-title">
+                  <i class="fas fa-info-circle"></i> Repo Info
+                </div>
+              </div>
+              <div class="panel-body" id="repoInfo">
+                <div class="loading-spin"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel" style="margin-top: 20px">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-history"></i> Activity Log
+              </div>
+            </div>
+            <div class="panel-body" id="activityLog"></div>
+          </div>
+        </div>
+
+        <!-- ROSTER -->
+        <div id="roster" class="section">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-user-plus"></i> Add / Edit Pilot
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="inline-info">
+                <i class="fas fa-info-circle"></i> Changes are committed
+                directly to the GitHub repository JSON files.
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Callsign</label>
+                  <input
+                    class="form-input"
+                    id="rCallsign"
+                    placeholder="e.g. VIPER01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Full Name</label>
+                  <input
+                    class="form-input"
+                    id="rName"
+                    placeholder="e.g. Sqn.Ldr. John Doe"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">IVAO VID</label>
+                  <input
+                    class="form-input"
+                    id="rVID"
+                    placeholder="e.g. 670000"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Rank</label>
+                  <select class="form-input" id="rRank">
+                    <option>Flight Cadet</option>
+                    <option>Pilot Officer</option>
+                    <option>Flying Officer</option>
+                    <option>Flight Lieutenant</option>
+                    <option>Squadron Leader</option>
+                    <option>Wing Commander</option>
+                    <option>Group Captain</option>
+                    <option>Air Commodore</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Aircraft Type</label>
+                  <input
+                    class="form-input"
+                    id="rAircraft"
+                    placeholder="e.g. F-16A/B"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Status</label>
+                  <select class="form-input" id="rStatus">
+                    <option value="active">Active</option>
+                    <option value="reserve">Reserve</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Join Date</label>
+                  <input class="form-input" type="date" id="rJoinDate" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Role</label>
+                  <select class="form-input" id="rRole">
+                    <option value="member">Member</option>
+                    <option value="community">Community</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="command">Command</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-actions" style="margin-top: 16px">
+                <button class="btn btn-primary" onclick="saveRoster()">
+                  <i class="fas fa-save"></i> Save to GitHub
+                </button>
+                <button class="btn btn-ghost" onclick="clearRosterForm()">
+                  <i class="fas fa-times"></i> Clear
+                </button>
+                <span class="text-muted" id="rosterSaveStatus"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-list"></i> Current Roster
+              </div>
+              <button
+                class="btn btn-ghost"
+                style="font-size: 11px; padding: 6px 12px"
+                onclick="loadRosterData()"
+              >
+                <i class="fas fa-sync"></i> Refresh
+              </button>
+            </div>
+            <div class="panel-body">
+              <div id="rosterTableWrap">
+                <div
+                  style="text-align: center; padding: 40px; color: var(--text3)"
+                >
+                  <div class="loading-spin"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- MISSIONS -->
+        <div id="missions" class="section">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-plus-circle"></i> Create Mission
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="form-grid cols3">
+                <div class="form-group">
+                  <label class="form-label">Mission ID</label>
+                  <input
+                    class="form-input"
+                    id="mID"
+                    placeholder="e.g. OPS-2026-001"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Callsign</label>
+                  <input
+                    class="form-input"
+                    id="mCallsign"
+                    placeholder="e.g. HUNTER01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Status</label>
+                  <select class="form-input" id="mStatus">
+                    <option value="planned">Planned</option>
+                    <option value="pending">Pending</option>
+                    <option value="ongoing">Ongoing</option>
+                    <option value="completed">Completed</option>
+                    <option value="cancelled">Cancelled</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Departure (ICAO)</label>
+                  <input class="form-input" id="mDep" placeholder="e.g. VTSS" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Arrival (ICAO)</label>
+                  <input class="form-input" id="mArr" placeholder="e.g. VTUD" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Aircraft</label>
+                  <input
+                    class="form-input"
+                    id="mAircraft"
+                    placeholder="e.g. F-16A/B"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Date (UTC)</label>
+                  <input class="form-input" type="date" id="mDate" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Time (UTC)</label>
+                  <input class="form-input" type="time" id="mTime" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Altitude (ft)</label>
+                  <input
+                    class="form-input"
+                    id="mAlt"
+                    placeholder="e.g. FL350"
+                  />
+                </div>
+                <div class="form-group full">
+                  <label class="form-label">Briefing Notes</label>
+                  <textarea
+                    class="form-input"
+                    id="mNotes"
+                    rows="3"
+                    placeholder="Mission briefing, objectives, special instructions..."
+                  ></textarea>
+                </div>
+              </div>
+              <div class="form-actions" style="margin-top: 16px">
+                <button class="btn btn-primary" onclick="saveMission()">
+                  <i class="fas fa-save"></i> Save to GitHub
+                </button>
+                <button class="btn btn-ghost" onclick="clearMissionForm()">
+                  <i class="fas fa-times"></i> Clear
+                </button>
+                <span class="text-muted" id="missionSaveStatus"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-list-alt"></i> Mission List
+              </div>
+              <button
+                class="btn btn-ghost"
+                style="font-size: 11px; padding: 6px 12px"
+                onclick="loadMissionsData()"
+              >
+                <i class="fas fa-sync"></i> Refresh
+              </button>
+            </div>
+            <div class="panel-body" id="missionsTableWrap">
+              <div style="text-align: center; padding: 40px">
+                <div class="loading-spin"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FLEET -->
+        <div id="fleet" class="section">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-plus-circle"></i> Add Aircraft
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="form-grid cols3">
+                <div class="form-group">
+                  <label class="form-label">Aircraft Name</label>
+                  <input
+                    class="form-input"
+                    id="fName"
+                    placeholder="e.g. F-16A/B Fighting Falcon"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Short Code</label>
+                  <input
+                    class="form-input"
+                    id="fCode"
+                    placeholder="e.g. F-16"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Category</label>
+                  <select class="form-input" id="fCat">
+                    <option value="fighter">Fighter</option>
+                    <option value="transport">Transport</option>
+                    <option value="trainer">Trainer</option>
+                    <option value="aew">AEW</option>
+                    <option value="helicopter">Helicopter</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Sim Addon</label>
+                  <input
+                    class="form-input"
+                    id="fAddon"
+                    placeholder="e.g. IndiaFoxtEcho"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">ICAO Type Code</label>
+                  <input class="form-input" id="fICAO" placeholder="e.g. F16" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Status</label>
+                  <select class="form-input" id="fStatus">
+                    <option value="active">Active</option>
+                    <option value="limited">Limited</option>
+                    <option value="retired">Retired</option>
+                  </select>
+                </div>
+                <div class="form-group full">
+                  <label class="form-label">Description</label>
+                  <textarea
+                    class="form-input"
+                    id="fDesc"
+                    rows="2"
+                    placeholder="Brief description..."
+                  ></textarea>
+                </div>
+              </div>
+              <div class="form-actions" style="margin-top: 16px">
+                <button class="btn btn-primary" onclick="saveFleet()">
+                  <i class="fas fa-save"></i> Save to GitHub
+                </button>
+                <button class="btn btn-ghost" onclick="clearFleetForm()">
+                  <i class="fas fa-times"></i> Clear
+                </button>
+                <span class="text-muted" id="fleetSaveStatus"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-list"></i> Fleet Registry
+              </div>
+              <button
+                class="btn btn-ghost"
+                style="font-size: 11px; padding: 6px 12px"
+                onclick="loadFleetData()"
+              >
+                <i class="fas fa-sync"></i> Refresh
+              </button>
+            </div>
+            <div class="panel-body" id="fleetTableWrap">
+              <div style="text-align: center; padding: 40px">
+                <div class="loading-spin"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GALLERY -->
+        <div id="gallery" class="section">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-link"></i> Add Gallery Entry
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="inline-info">
+                <i class="fas fa-info-circle"></i> Reference image filenames
+                relative to the <code>image/</code> folder or use full URLs.
+              </div>
+              <div class="form-grid">
+                <div class="form-group">
+                  <label class="form-label">Image Path / URL</label>
+                  <input
+                    class="form-input"
+                    id="gSrc"
+                    placeholder="image/screenshot.png or https://..."
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Title</label>
+                  <input
+                    class="form-input"
+                    id="gTitle"
+                    placeholder="e.g. F-16 Over Bangkok"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Pilot</label>
+                  <input
+                    class="form-input"
+                    id="gPilot"
+                    placeholder="e.g. VIPER01"
+                  />
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Date</label>
+                  <input class="form-input" type="date" id="gDate" />
+                </div>
+                <div class="form-group full">
+                  <label class="form-label">Caption</label>
+                  <input
+                    class="form-input"
+                    id="gCaption"
+                    placeholder="Short description"
+                  />
+                </div>
+              </div>
+              <div class="form-actions" style="margin-top: 16px">
+                <button class="btn btn-primary" onclick="saveGallery()">
+                  <i class="fas fa-save"></i> Save to GitHub
+                </button>
+                <button class="btn btn-ghost" onclick="clearGalleryForm()">
+                  <i class="fas fa-times"></i> Clear
+                </button>
+                <span class="text-muted" id="gallerySaveStatus"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-images"></i> Gallery Items
+              </div>
+              <button
+                class="btn btn-ghost"
+                style="font-size: 11px; padding: 6px 12px"
+                onclick="loadGalleryData()"
+              >
+                <i class="fas fa-sync"></i> Refresh
+              </button>
+            </div>
+            <div class="panel-body" id="galleryTableWrap">
+              <div style="text-align: center; padding: 40px">
+                <div class="loading-spin"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FILES -->
+        <div id="files" class="section">
+          <div
+            style="display: grid; grid-template-columns: 260px 1fr; gap: 20px"
+          >
+            <div class="panel" style="margin-bottom: 0">
+              <div class="panel-header">
+                <div class="panel-title">
+                  <i class="fab fa-github"></i> Repository
+                </div>
+              </div>
+              <div class="panel-body">
+                <div class="file-list" id="fileList">
+                  <div style="text-align: center; padding: 20px">
+                    <div class="loading-spin"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="panel" style="margin-bottom: 0">
+              <div class="panel-header">
+                <div class="panel-title">
+                  <i class="fas fa-edit"></i> File Editor
+                </div>
+                <div style="display: flex; gap: 8px">
+                  <button
+                    class="btn btn-primary"
+                    style="font-size: 11px; padding: 6px 14px"
+                    onclick="commitFile()"
+                  >
+                    <i class="fas fa-upload"></i> Commit
+                  </button>
+                  <button
+                    class="btn btn-ghost"
+                    style="font-size: 11px; padding: 6px 14px"
+                    onclick="closeFileEditor()"
+                  >
+                    <i class="fas fa-times"></i> Close
+                  </button>
+                </div>
+              </div>
+              <div class="panel-body">
+                <div id="fileEditorArea">
+                  <div class="empty-state">
+                    <i class="fas fa-file-code"></i>
+                    <p>Select a file from the list to edit</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- COMMITS -->
+        <div id="commits" class="section">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-code-branch"></i> Commit History
+              </div>
+              <button
+                class="btn btn-ghost"
+                style="font-size: 11px; padding: 6px 12px"
+                onclick="loadCommits()"
+              >
+                <i class="fas fa-sync"></i> Refresh
+              </button>
+            </div>
+            <div class="panel-body" id="commitsList">
+              <div style="text-align: center; padding: 40px">
+                <div class="loading-spin"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div id="settings" class="section">
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-key"></i> GitHub Configuration
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="form-group" style="margin-bottom: 16px">
+                <label class="form-label">GitHub Token</label>
+                <input
+                  class="form-input"
+                  type="password"
+                  id="settingsToken"
+                  placeholder="ghp_..."
+                />
+              </div>
+              <div class="form-group" style="margin-bottom: 16px">
+                <label class="form-label">Repository Owner</label>
+                <input
+                  class="form-input"
+                  id="settingsOwner"
+                  placeholder="e.g. your-username"
+                />
+              </div>
+              <div class="form-group" style="margin-bottom: 16px">
+                <label class="form-label">Repository Name</label>
+                <input
+                  class="form-input"
+                  id="settingsRepo"
+                  placeholder="e.g. tvaf-ops-website"
+                />
+              </div>
+              <div class="form-group" style="margin-bottom: 16px">
+                <label class="form-label">Default Branch</label>
+                <input
+                  class="form-input"
+                  id="settingsBranch"
+                  value="main"
+                  placeholder="main"
+                />
+              </div>
+              <div class="sep"></div>
+              <div class="form-actions">
+                <button class="btn btn-primary" onclick="saveSettings()">
+                  <i class="fas fa-save"></i> Save & Test Connection
+                </button>
+                <span class="text-muted" id="settingsStatus"></span>
+              </div>
+              <div class="sep"></div>
+              <div id="ghStatusCard"></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-header">
+              <div class="panel-title">
+                <i class="fas fa-sliders-h"></i> Data File Paths
+              </div>
+            </div>
+            <div class="panel-body">
+              <div class="config-row">
+                <div>
+                  <div class="config-label">Roster Data</div>
+                  <div class="config-desc">JSON file for pilot roster</div>
+                </div>
+                <input
+                  class="form-input"
+                  id="pathRoster"
+                  style="width: 220px"
+                  value="src/data/roster.json"
+                />
+              </div>
+              <div class="config-row">
+                <div>
+                  <div class="config-label">Missions Data</div>
+                  <div class="config-desc">JSON file for missions/navlog</div>
+                </div>
+                <input
+                  class="form-input"
+                  id="pathMissions"
+                  style="width: 220px"
+                  value="src/data/missions.json"
+                />
+              </div>
+              <div class="config-row">
+                <div>
+                  <div class="config-label">Fleet Data</div>
+                  <div class="config-desc">JSON file for aircraft fleet</div>
+                </div>
+                <input
+                  class="form-input"
+                  id="pathFleet"
+                  style="width: 220px"
+                  value="src/data/fleet.json"
+                />
+              </div>
+              <div class="config-row">
+                <div>
+                  <div class="config-label">Gallery Data</div>
+                  <div class="config-desc">JSON file for gallery images</div>
+                </div>
+                <input
+                  class="form-input"
+                  id="pathGallery"
+                  style="width: 220px"
+                  value="src/data/gallery.json"
+                />
+              </div>
+              <div class="form-actions" style="margin-top: 16px">
+                <button class="btn btn-ghost" onclick="savePaths()">
+                  <i class="fas fa-save"></i> Save Paths
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TOAST CONTAINER -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- FIRST-RUN SETUP MODAL -->
+    <div
+      class="modal-overlay"
+      id="setupModal"
+      style="display: none; align-items: center; justify-content: center"
+    >
+      <div class="modal-box" style="width: 460px">
+        <h3 style="display: flex; align-items: center; gap: 10px">
+          <span style="color: var(--accent)">🔑</span> GitHub Token Required
+        </h3>
+        <p style="margin-bottom: 8px">
+          Repo is pre-configured:
+          <strong style="color: var(--accent2)"
+            >karnnithi2548-ops / VTAF</strong
+          >
+        </p>
+        <p style="margin-bottom: 20px; font-size: 12px; color: var(--text3)">
+          Paste your GitHub Personal Access Token (needs
+          <code>repo</code> scope). It is saved only in your browser — never in
+          the file.
+        </p>
+        <div class="form-group" style="margin-bottom: 12px">
+          <label class="form-label">GitHub Personal Access Token</label>
+          <input
+            class="form-input"
+            type="password"
+            id="setupToken"
+            placeholder="ghp_..."
+            onkeydown="if (event.key === 'Enter') applySetup();"
+          />
+        </div>
+        <div class="form-group" style="margin-bottom: 20px">
+          <label class="form-label">Branch (default: main)</label>
+          <input
+            class="form-input"
+            id="setupBranch"
+            value="main"
+            placeholder="main"
+          />
+        </div>
+        <div style="display: flex; gap: 10px">
+          <button class="btn btn-primary" onclick="applySetup()">
+            <i class="fas fa-plug"></i> Connect
+          </button>
+          <button class="btn btn-ghost" onclick="dismissSetup()">Skip</button>
+        </div>
+        <p style="margin-top: 14px; font-size: 11px; color: var(--text3)">
+          <i class="fas fa-lock"></i> Token is stored in localStorage only.
+          Never share this admin file publicly.
+        </p>
+      </div>
+    </div>
+
+    <!-- CONFIRM MODAL -->
+    <div class="modal-overlay" id="confirmModal">
+      <div class="modal-box">
+        <h3 id="confirmTitle">Confirm Action</h3>
+        <p id="confirmMsg">Are you sure?</p>
+        <div style="display: flex; gap: 10px">
+          <button class="btn btn-danger" id="confirmOkBtn">Confirm</button>
+          <button class="btn btn-ghost" onclick="closeConfirm()">Cancel</button>
+        </div>
+      </div>
+    </div>
+     <script src="database/admin.js"></script>
+  </body>
+</html>

@@ -1,0 +1,182 @@
+[
+  {
+    "name": "JAS 39C/D",
+    "role": "Callsign : SHARK",
+    "origin": "Saab JAS 39",
+    "image": "https://welcome-page.rtaf.mi.th/web/image/4174-f1d462a1/Saab_JAS39C_Gripen_70109_Thai_AF_%287363327062%29.jpg?access_token=39dfd452-38db-4ee2-89cd-ad6cddc12a5e",
+    "category": "fighter",
+    "desc": "Air superiority & strike missions. Primary air defense asset of Thai VAF.",
+    "specs": "Max Speed: Mach 2.0 | Armament: AIM-120, IRIS-T | Crew: 1"
+  },
+  {
+    "name": "F-16A/B Block 15 OCU MLU ADF",
+    "role": "Callsign : LIGHTING & COBRA & VIPER & STAR",
+    "origin": "McDonnell Douglas / Boeing",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/a/a6/RTAF_F-16A_Block15OCU_103SQN.jpg",
+    "category": "fighter",
+    "desc": "Multi-role fighter for air patrol and interception.",
+    "specs": "Max Speed: Mach 2.05 | Armament: AIM-9, M61 Vulcan | Crew: 1"
+  },
+  {
+    "name": "F-5TH",
+    "role": "Callsign : Eagle",
+    "origin": "Northrop Grumman",
+    "image": "https://thaimilitaryandasianregion.wordpress.com/wp-content/uploads/2016/01/f5e_21129_211sq_120114-2.jpg",
+    "category": "fighter",
+    "desc": "Advanced multi-role fighter with AESA radar.",
+    "specs": "Max Speed: Mach 2.0 | Enhanced avionics | Crew: 1"
+  },
+  {
+    "name": "AV-8B HARRIER",
+    "role": "Callsign : Angle",
+    "origin": "Hawker Siddeley",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/3/38/Hawker_Siddeley_AV-8S_Harrier%2C_Thailand_-_Navy_AN1505085.jpg",
+    "category": "fighter",
+    "desc": "Advanced multi-role fighter with AESA radar.",
+    "specs": "Max Speed: Mach 2.0 | Enhanced avionics | Crew: 1"
+  },
+  {
+    "name": "AT-6TH",
+    "role": "Callsign : Lanna",
+    "origin": "Textron Aviation",
+    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizXwnDTp1CyCpSJTMxiK3b1qr3CsnDPaiRoBys3WeZDEZptIORpeGJRqKgzblUl9KEu4OP0_RuMc99QveEDhJE1hv7KZaR3FUGJRi96eDO63Ug4a_O0hGEUYvYtaxSXZjf8H1y8Nam9vHfJw9PdDU7lw5VTYrfyZNNO_B1URVWnVIm5EwNMM618-rpzrq5/s2048/AT-6TH%2041104%20RTAF-7.jpg",
+    "category": "fighter",
+    "desc": "Advanced multi-role fighter with AESA radar.",
+    "specs": "Max Speed: Mach 2.0 | Enhanced avionics | Crew: 1"
+  },
+  {
+    "name": "Alpha Jet",
+    "role": "Callsign : Hunter",
+    "origin": "Dassault Aviation",
+    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjfuOZ4YZgammkZU9ibpMd4BSOGuMCvhn_xp4-96K27j6OYxe8d16jN20J6t9vsZCOKqvtJPoXPI6PuSifMaLrDx-2iEq0D2E5lW7d9IVMTa3I2lpQU2i_LbJp_plfDrWKmZO9Ev7nAujHxuRTpCNIh8vD6ioKGn6E2ok3gr8PRs7y2mptM64nw0f8Z/s2048/Alpha%20Jet%20TH%2023112%20RTAF-4.jpg",
+    "category": "fighter",
+    "desc": "Advanced multi-role fighter with AESA radar.",
+    "specs": "Max Speed: 540 kts | Enhanced avionics | Crew: 1"
+  },
+  {
+    "name": "C-130H Hercules",
+    "role": "Callsign : Lucky",
+    "origin": "Lockheed Martin",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/9/91/Royal_Thai_Air_Force_Lockheed_C-130H_Hercules_%28L-382%29.jpg",
+    "category": "transport",
+    "desc": "Heavy lift & paratroop drop. Critical for logistics.",
+    "specs": "Payload: 20 tons | Range: 4,522 NM | Crew: 5"
+  },
+  {
+    "name": "Saab 340B",
+    "role": "Callsign : Orca",
+    "origin": "Saab AB",
+    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgfHlyr8U53AYt7K79zsvgT-gqsswQYEDMeBJGxS-4PYZN6lBOUR8B5GBINWLdXYN8U7zijpmMlofaJz7yKViaOYHH7sQbQjnsJ2BrnxqxtaHtAUa5p22rN0lOe1ggyXtve6P__qLdsDS4/s1600/25681740198_c6963ba554_b.jpg",
+    "category": "transport",
+    "desc": "Heavy strategic airlifter for long-range missions.",
+    "specs": "Payload: 77 tons | Range: 4,480 km | Crew: 3"
+  },
+  {
+    "name": "A319",
+    "role": "Callsign : Wihok",
+    "origin": "Airbus",
+    "image": "https://cdn.planespotters.net/47565/hs-tyr-royal-thai-air-force-airbus-a319-115cj_PlanespottersNet_744362_7753a016a6_280.jpg",
+    "category": "transport",
+    "desc": "Heavy lift & paratroop drop. Critical for logistics.",
+    "specs": "Payload: 40 Tons | Range: | Crew: "
+  },
+  {
+    "name": "A320",
+    "role": "Callsign : Wihok",
+    "origin": "Airbus",
+    "image": "https://live.staticflickr.com/65535/49858150822_3f15e53ac5_b.jpg",
+    "category": "transport",
+    "desc": "Heavy lift & paratroop drop. Critical for logistics.",
+    "specs": "Payload: | Range: | Crew: "
+  },
+  {
+    "name": "A340",
+    "role": "Callsign : Wihok",
+    "origin": "Airbus",
+    "image": "https://2.bp.blogspot.com/-m31Vv6VEqT0/WYpSGjdvBNI/AAAAAAAAY_Y/lFaVc7_EY8MvhEhhf3gsZL6DM4hG10IngCLcBGAs/s1600/RTAF%2BA345%2B60204%2B%2528YSCB%2529%2BSP.jpg",
+    "category": "transport",
+    "desc": "Heavy lift & paratroop drop. Critical for logistics.",
+    "specs": "Payload: | Range: | Crew: "
+  },
+  {
+    "name": "B737",
+    "role": "Callsign : Wihok",
+    "origin": "Boeing",
+    "image": "https://cdn.flightsim.to/images/requests/18/cljfM.jpg?width=1400&auto_optimize=medium",
+    "category": "transport",
+    "desc": "Heavy lift & paratroop drop. Critical for logistics.",
+    "specs": "Payload: | Range: | Crew: "
+  },
+  {
+    "name": "ATR 72",
+    "role": "Callsign : Cowboy",
+    "origin": "ATR",
+    "image": "https://cdn.plnspttrs.net/47864/60316-royal-thai-air-force-atr-72-500-72-212a_PlanespottersNet_1402172_6194ba6f49_o.jpg",
+    "category": "transport",
+    "desc": "Heavy lift & paratroop drop. Critical for logistics.",
+    "specs": "Payload: | Range: | Crew: "
+  },
+  {
+    "name": "T50 Golden Eagle",
+    "role": "Callsign : Dragon",
+    "origin": "Korea Aerospace Industries",
+    "image": "https://1.bp.blogspot.com/-606nrpK2mgQ/YQjwNSHcn2I/AAAAAAAAW2g/2m0PqaZKXj01IELavN4MfmJCNP9oVH0KgCLcBGAsYHQ/s800/Thailand_buy_additional_KAI_T-50TH.jpg",
+    "category": "trainer",
+    "desc": "Light attack/Lead-in fighter trainer.",
+    "specs": "Max Speed: 178 kts | Advanced cockpit | Crew: 5"
+  },
+  {
+    "name": "DA40",
+    "role": "Callsign : Sunny",
+    "origin": "Diamond Aircraft Industries",
+    "image": "https://cdn.jetphotos.com/full/5/781563_1700148294.jpg",
+    "category": "trainer",
+    "desc": "Basic trainer for fighter pilot conversion.",
+    "specs": "Max Speed: 178 kts | Advanced cockpit | Crew: 5"
+  },
+  {
+    "name": "DA42",
+    "role": "Callsign : Sunny",
+    "origin": "Diamond Aircraft Industries",
+    "image": "https://cdn.jetphotos.com/full/6/87912_1473959170.jpg",
+    "category": "trainer",
+    "desc": "Basic trainer for fighter pilot conversion.",
+    "specs": "Max Speed: | Advanced cockpit | Crew: 2"
+  },
+  {
+    "name": "CT-4B",
+    "role": "Callsign : Sunny",
+    "origin": "Pacific Aerospace",
+    "image": "https://cdn.jetphotos.com/full/6/886396_1736650996.jpg",
+    "category": "trainer",
+    "desc": "Basic trainer for fighter pilot conversion.",
+    "specs": "Max Speed: | Advanced cockpit | Crew: 2"
+  },
+  {
+    "name": "CT-4E",
+    "role": "Callsign : Chicken",
+    "origin": "Pacific Aerospace",
+    "image": "https://live.staticflickr.com/7465/16146411547_56c641e496_b.jpg",
+    "category": "trainer",
+    "desc": "Basic trainer for fighter pilot conversion.",
+    "specs": "Max Speed: | Advanced cockpit | Crew: 2"
+  },
+  {
+    "name": "T-6 Texan II",
+    "role": "Callsign : Mustang",
+    "origin": "Textron Aviation",
+    "image": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEizpFYsNYpeMRSX5BwOU_LYwmqrRTHmE6VLdfSXhyp-sNxZMOkHQU8otUchSjTeawvlmaaujc1M234fuxnSSyzSUDchSZuoGjoNKEa76eaRVTnBSoNE7DsF5SYahj_q2uHNctpZqpuepAut_KmLQ8RKpaicfs1rYo6ieU8v0CkXHW7AbdGdL601h3RC/w1200-h630-p-k-no-nu/T-6TH%20RTAF-37.jpg",
+    "category": "trainer",
+    "desc": "Advance trainer for fighter pilot conversion.",
+    "specs": "Max Speed: | Advanced cockpit | Crew: 2"
+  },
+  {
+    "name": "Saab 340 AEW&C",
+    "role": "Callsign : Orca",
+    "origin": "SAAB",
+    "image": "https://cdn.planespotters.net/18327/70201-royal-thai-air-force-saab-340-aewc_PlanespottersNet_485385_2ef1729a2a_o.jpg",
+    "category": "aew",
+    "desc": "Supersonic trainer for fighter pilot conversion.",
+    "specs": "Max Speed: Mach 1.5 | Advanced cockpit | Crew: 2"
+  }
+]

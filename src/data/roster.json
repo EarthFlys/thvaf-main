@@ -1,0 +1,83 @@
+{
+  "roster": [
+    {
+      "callsign": "PANIC",
+      "name": "Karnnithi Kaewklam",
+      "rank": "Founder & Major",
+      "role": "Operations Officer",
+      "ivaoId": "620759",
+      "image": "image/roster/panic.jpg"
+    },
+    {
+      "callsign": "SILVERBIRD",
+      "name": "Chayatorn Na Thalang",
+      "rank": "Co-Founder & Major General",
+      "role": "Commanding Officer",
+      "ivaoId": "TH-T04"
+    },
+    {
+      "callsign": "CARROT 02",
+      "name": "Prem Pakabunto",
+      "rank": "Co-Founder & Major",
+      "role": "Flight Instructor",
+      "ivaoId": "TH-SOC/TH-T01"
+    },
+    {
+      "callsign": "HSOTO",
+      "name": "Peerapat Polnawee",
+      "rank": "Captain",
+      "role": "Senior Pilot",
+      "ivaoId": "755407",
+      "image": "image/roster/HSOTO.jpg"
+    },
+    {
+      "callsign": "NOBLE",
+      "name": "Narongrit Sittisuonjit",
+      "rank": "Technical Sergeant",
+      "role": "Operations Officer",
+      "ivaoId": "684950",
+      "image": "image/roster/noble.jpg"
+    },
+    {
+      "callsign": "CARROT 03",
+      "name": "Wachirachan Tangkasemwiboon",
+      "rank": "Senior Airman",
+      "role": "Pilot",
+      "ivaoId": "590389"
+    },
+    {
+      "callsign": "T",
+      "name": "Nat Ranseng",
+      "rank": "Airman First Class",
+      "role": "Pilot",
+      "ivaoId": "518533"
+    }
+  ],
+  "community": [
+    {
+      "callsign": "UCOM 04",
+      "name": "Kittisak Rukkaew",
+      "rank": "Senior Airman",
+      "ivaoId": "211658"
+    },
+    {
+      "callsign": "NIKCAT",
+      "name": "Anuruth",
+      "rank": "Air Traffic Controller",
+      "ivaoId": "764783"
+    },
+    {
+      "callsign": "SUNNY 27",
+      "name": "Chaiyaphat Pasuktrakoon",
+      "rank": "Airman First Class",
+      "role": "Pilot",
+      "ivaoId": "636349"
+    },
+    {
+      "callsign": "GBOOM",
+      "name": "Krittamuk Muangmanee",
+      "rank": "Technical Officer",
+      "ivaoId": "635377"
+    }
+  ]
+}
